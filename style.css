@@ -1,0 +1,83 @@
+/********************
+    Body Styles
+********************/
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #212121;
+  height: 100%;
+}
+
+.main-wrapper {
+  width: 700px;
+  height: 600px;
+  margin: auto;
+}
+
+/********************
+    Control Styles
+********************/
+
+.controls {
+  display: inline-block;
+  background-image: linear-gradient(45deg, #212121 30%, rgba(200,200,200,1));
+  height: 600px;
+  width: 100px;
+  margin-bottom: -4px;
+}
+
+.controls div {
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  border: solid #212121;
+}
+
+.start {
+  position: relative;
+}
+.play-button {
+  display: inline-block;
+  position: absolute;
+  font-family: "Lucida Grande", Sans-Serif;
+  font-weight: bold;
+  color: #fbfbfb;
+  background-image: linear-gradient(0deg, #212121 50%, rgba(200,200,200,1));
+  margin: 90px 20px;
+  height: 20px;
+  width: 60px;
+  border-radius: 8px;
+}
+
+/********************
+    Board Styles
+********************/
+
+.board {
+  display: inline-block;
+  width: 600px;
+  height: 600px;
+  margin-left: -4px;
+  vertical-align: top;
+}
+
+.board span {
+  display: inline-block;
+  width: 12.5%;
+  height: 12.5%;
+  background-color: #fbfbfb;
+  margin-bottom: -4px;
+}
+
+.board span:not(:nth-of-type(8n+1)) {
+  margin-left: -4px;
+}
+
+.row:nth-child(odd) span:nth-child(even),
+.row:nth-child(even) span:nth-child(odd) {
+  background-image: linear-gradient(45deg, #212121 60%, rgba(200,200,200,1));
+}
