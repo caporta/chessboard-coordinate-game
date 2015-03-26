@@ -1,6 +1,5 @@
-/********************
-    Body Styles
-********************/
+/* Body Styles
+================================== */
 
 * {
   box-sizing: border-box;
@@ -13,49 +12,57 @@ body {
 }
 
 .main-wrapper {
-  width: 700px;
+  width: 800px;
   height: 600px;
-  margin: auto;
+  margin: 0 auto;
 }
 
-/********************
-    Control Styles
-********************/
+/* Control Styles
+================================== */
 
 .controls {
   display: inline-block;
-  background-image: linear-gradient(45deg, #212121 30%, rgba(200,200,200,1));
+  background-image: linear-gradient(45deg, #212121 10%, rgba(200,200,200,1));
   height: 600px;
   width: 100px;
   margin-bottom: -4px;
+  vertical-align: top;
 }
 
-.controls div {
+.start,
+.side,
+.theme {
   display: inline-block;
   width: 100%;
   height: 200px;
   border: solid #212121;
-}
-
-.start {
   position: relative;
 }
+
 .play-button {
-  display: inline-block;
-  position: absolute;
-  font-family: "Lucida Grande", Sans-Serif;
-  font-weight: bold;
-  color: #fbfbfb;
-  background-image: linear-gradient(0deg, #212121 50%, rgba(200,200,200,1));
-  margin: 90px 20px;
-  height: 20px;
-  width: 60px;
-  border-radius: 8px;
+  display: block;
+  margin: 80px auto;
 }
 
-/********************
-    Board Styles
-********************/
+.side label,
+.theme label {
+  display: block;
+  color: #fbfbfb;
+  font-size: .9em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#choose-side,
+#choose-theme {
+  display: inline-block;
+  position: absolute;
+  left: 10%;
+  top: 45%;
+}
+
+/* Board Styles
+================================== */
 
 .board {
   display: inline-block;
@@ -63,21 +70,249 @@ body {
   height: 600px;
   margin-left: -4px;
   vertical-align: top;
+  border: solid #212121;
 }
 
-.board span {
+.rank {
+  height: 12.5%;
+}
+
+.square {
   display: inline-block;
   width: 12.5%;
-  height: 12.5%;
+  height: 100%;
   background-color: #fbfbfb;
   margin-bottom: -4px;
 }
 
-.board span:not(:nth-of-type(8n+1)) {
+.square:not(:nth-of-type(8n+1)) {
   margin-left: -4px;
 }
 
-.row:nth-child(odd) span:nth-child(even),
-.row:nth-child(even) span:nth-child(odd) {
-  background-image: linear-gradient(45deg, #212121 60%, rgba(200,200,200,1));
+.rank:nth-child(odd) .square:nth-child(even),
+.rank:nth-child(even) .square:nth-child(odd) {
+  background-color: #4c4c4c;
 }
+
+/* Queue Styles
+================================== */
+
+.coordinate-queue {
+  display: inline-block;
+  background-image: linear-gradient(225deg, #212121 10%, rgba(200,200,200,1));
+  height: 600px;
+  width: 100px;
+  border: solid #212121;
+  margin-left: -4px;
+  text-align: center;
+  font-size: .9em;
+  color: #fbfbfb;
+  text-decoration: underline;
+}
+
+/* Piece Styles
+================================== */
+
+#a8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#b8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#c8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#d8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/4/47/Chess_qdt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+  
+}
+
+#e8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#f8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#g8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#h8 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#a7,
+#c7,
+#e7,
+#g7 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#b7,
+#d7,
+#f7,
+#h7 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#a2,
+#c2,
+#e2,
+#g2 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#b2,
+#d2,
+#f2,
+#h2 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#a1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#b1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#c1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#d1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/1/15/Chess_qlt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#e1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#f1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+#g1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/7/70/Chess_nlt45.svg)
+    center / 90% 90%
+    no-repeat
+    #4c4c4c;
+}
+
+#h1 {
+  background:
+    url(http://upload.wikimedia.org/wikipedia/commons/7/72/Chess_rlt45.svg)
+    center / 90% 90%
+    no-repeat,
+    #fbfbfb;
+}
+
+/* Progress Styles
+================================== */
+
+.progress-bar {
+  height: 5px;
+  background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#5fcf80,#5faa70);
+  -webkit-animation-name: slide;
+  -webkit-animation-duration: 30s;
+  -webkit-animation-timing-function: linear;
+}
+
+/* Keyframes
+================================== */
+
+@-webkit-keyframes slide {
+  0% {width: 0%;}
+  100% {width: 100%;}
+}
+
+@keyframes slide {
+  0% {width: 0%;}
+  100% {width: 100%;}
+}
+
+
+
+
+
+
+
