@@ -39,7 +39,7 @@ body {
   position: relative;
 }
 
-.play-button {
+#play-button {
   display: block;
   margin: 80px auto;
 }
@@ -92,22 +92,6 @@ body {
 .rank:nth-child(odd) .square:nth-child(even),
 .rank:nth-child(even) .square:nth-child(odd) {
   background-color: #4c4c4c;
-}
-
-/* Queue Styles
-================================== */
-
-.coordinate-queue {
-  display: inline-block;
-  background-image: linear-gradient(225deg, #212121 10%, rgba(200,200,200,1));
-  height: 600px;
-  width: 100px;
-  border: solid #212121;
-  margin-left: -4px;
-  text-align: center;
-  font-size: .9em;
-  color: #fbfbfb;
-  text-decoration: underline;
 }
 
 /* Piece Styles
@@ -295,6 +279,27 @@ body {
   -webkit-animation-name: slide;
   -webkit-animation-duration: 30s;
   -webkit-animation-timing-function: linear;
+}
+
+.progress-panel {
+  display: inline-block;
+  background-image: linear-gradient(225deg, #212121 10%, rgba(200,200,200,1));
+  height: 600px;
+  width: 100px;
+  margin-left: -4px;
+  text-align: center;
+  font-size: .9em;
+  color: #fbfbfb;
+  text-decoration: underline;
+}
+
+.current-coordinate,
+.final-score {
+  display: inline-block;
+  width: 100%;
+  height: 300px;
+  border: solid #212121;
+  position: relative;
 }
 
 /* Keyframes

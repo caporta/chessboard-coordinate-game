@@ -10,7 +10,7 @@
     <div class="main-wrapper">
       <div class="controls">
         <div class="start">
-          <button class="play-button">Start!</button>
+          <button id="play-button">Start!</button>
         </div>
         <div class="side">
           <label for="choose-side">Choose Your Side:</label>
@@ -24,7 +24,6 @@
           <label for="choose-theme">Choose Your Theme:</label>
           <select id="choose-theme">
             <option value="modern">Modern</option>
-            <option value="classic">Classic</option>
           </select>
         </div>
       </div>
@@ -110,10 +109,18 @@
           <div class="square" id="h1"></div>
         </div>
       </div>
-      <div class="coordinate-queue">Move Queue</div>
+      <div class="progress-panel">
+        <div class="current-coordinate">
+          <h4>Coordinate:</h4>
+          <div id="current-coordinate-holder"></div>
+        </div>
+        <div class="final-score">
+          <h4>Final Score:</h4>
+          <div id="final-score-holder"></div>
+        </div>
+      </div>
       <div id="prog-bar"></div>
     </div>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
