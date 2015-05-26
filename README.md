@@ -1,4 +1,7 @@
 ## Chessboard Coordinate Game
+
+![Preview Image](img/board.jpg?raw=true)
+
 > This trainer prototype works to improve memorization and recall of the board's layout & coordinate system, which in turn leads to greater comfort reading algebraic notation, an essential skill in game analysis.
 
 ## Usage
