@@ -1,4 +1,4 @@
-## Chessboard Coordinate Game
+## Chessboard Coordinate Trainer
 
 ![Preview Image](img/board.jpg?raw=true)
 
