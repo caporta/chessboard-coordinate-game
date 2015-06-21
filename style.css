@@ -1,7 +1,7 @@
 /* Body Styles
 ================================== */
 
-* {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
