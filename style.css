@@ -162,7 +162,7 @@ body {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/f/ff/Chess_rdt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -178,7 +178,7 @@ body {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/9/98/Chess_bdt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -188,14 +188,13 @@ body {
     center / 90% 90%
     no-repeat
     #4c4c4c;
-  
 }
 
 #E8 {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/f/f0/Chess_kdt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -211,7 +210,7 @@ body {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -241,7 +240,7 @@ body {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -252,7 +251,7 @@ body {
   background:
     url(http://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg)
     center / 90% 90%
-    no-repeat,
+    no-repeat
     #fbfbfb;
 }
 
@@ -343,6 +342,3 @@ body {
   0% {width: 0%;}
   100% {width: 100%;}
 }
-
-
-
