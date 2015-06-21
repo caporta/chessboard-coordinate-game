@@ -2,7 +2,7 @@
 
 ![Preview Image](img/board.jpg?raw=true)
 
-> This trainer prototype works to improve memorization and recall of the board's layout & coordinate system, which in turn leads to greater comfort reading algebraic notation, an essential skill in game analysis.
+> This trainer works to improve memorization and recall of the board's layout & coordinate system, which in turn leads to greater comfort reading algebraic notation, an essential skill in game analysis.
 
 ## Usage
 > When playing as white, the eight "files" - or columns - are labeled **A-H (left to right)**, while the eight "ranks" - or rows - are labeled **1-8 (bottom to top)**.
