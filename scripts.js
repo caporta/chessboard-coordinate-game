@@ -1,116 +1,110 @@
 (function () {
   "use strict";
 
-  var squares = document.getElementsByClassName("square"),
-      playButton = document.getElementById("play-button"),
-      progBar = document.getElementById("prog-bar"),
-      finalScoreHolder = document.getElementById("final-score-holder"),
-      currentCoordinateHolder = document.getElementById("current-coordinate-holder"),
-      chooseSide = document.getElementById("choose-side"),
-      coordinates,
-      coordinateArr = [],
-      i,
-      currentMove,
-      sideVal,
-      correctAnswers = 0;
-
-  // push coordinates to array
-  function pushToArray() {
-    for (i = 0; i < squares.length; i += 1) {
-      coordinateArr.push(squares[i].getAttribute("id"));
-    }
-  }
-
-  // retrieve a random square's coordinates from arr
-  function getRandomCoordinates() {
-    return coordinateArr[Math.floor(Math.random() * coordinateArr.length)];
-  }
-
-  // flip board
-  function switchSides() {
-    coordinateArr.reverse();
-    for (i = 0; i < coordinateArr.length; i += 1) {
-      squares[i].setAttribute("id", coordinateArr[i]);
-    }
-  }
-
-  function randomSide() {
-    var sideGen = Math.round(Math.random());
-    if (!sideGen) {
-      switchSides();
-    }
-  }
-
-  // push random coordinates to the 'coordinate' queue
-  function currentCoordinates() {
-    currentMove = getRandomCoordinates();
-    currentCoordinateHolder.innerHTML = "<p>" + currentMove + "</p>";
-    return currentMove;
-  }
-
-  // add .progress-bar to activate timer
-  function startTimer() {
-    progBar.className = "progress-bar";
-  }
-
-  function nextMove(iDynamic) {
-    return function () {
-      if (currentMove === squares[iDynamic].getAttribute("id")) {
-        currentMove = currentCoordinates();
-        correctAnswers += 1;
-        currentCoordinateHolder.style.color = "#fbfbfb";
-        return currentMove;
-      } else if (currentMove !== squares[iDynamic].getAttribute("id")) {
-        currentCoordinateHolder.style.color = "#ff0033";
+  var board = {
+    squares: document.getElementsByClassName("square"),
+    playButton: document.getElementById("play-button"),
+    progBar: document.getElementById("prog-bar"),
+    finalScoreHolder: document.getElementById("final-score-holder"),
+    currentCoordinateHolder: document.getElementById("current-coordinate-holder"),
+    chooseSide: document.getElementById("choose-side"),
+    coordinateArr: [],
+    correctAnswers: 0,
+    currentMove: null,
+    sideVal: null,
+    //push coordinates to array
+    pushToArray: function () {
+      for (var i = 0; i < this.squares.length; i += 1) {
+        this.coordinateArr.push(this.squares[i].getAttribute("id"));
       }
-    };
-  }
-
-  // start game
-  function startGame() {
-    currentCoordinateHolder.style.color = "#fbfbfb";
-    sideVal = chooseSide.options[chooseSide.selectedIndex].value;
-    currentMove = currentCoordinates();
-    startTimer();
-    finalScoreHolder.innerHTML = "";
-    playButton.setAttribute("disabled", true);
-    if (sideVal === "random") {
-      randomSide();
-    } else if (sideVal === "black" && coordinateArr[0] === "a8") {
-      switchSides();
-    } else if (sideVal === "white" && coordinateArr[0] === "h1") {
-      switchSides();
+    },
+    //retrieve a random square's coordinates from arr
+    getRandomCoordinates: function () {
+      return this.coordinateArr[Math.floor(Math.random() * this.coordinateArr.length)];
+    },
+    //flip board
+    switchSides: function () {
+      this.coordinateArr.reverse();
+      for (var i = 0; i < this.coordinateArr.length; i += 1) {
+        this.squares[i].setAttribute("id", this.coordinateArr[i]);
+      }
+    },
+    randomSide: function () {
+      // 0 or 1
+      var sideGen = Math.random() >= 0.5 ? true : false;
+      if (!sideGen) {
+        board.switchSides();
+      }
+    },
+    //push random coordinates to the 'coordinate queue'
+    currentCoordinates: function () {
+      this.currentMove = this.getRandomCoordinates();
+      this.currentCoordinateHolder.innerHTML = "<p>" + this.currentMove + "</p>";
+      return this.currentMove;
+    },
+    //add .progress-bar to active timer
+    startTimer: function () {
+      this.progBar.className = "progress-bar";
+    },
+    nextMove: function (iDynamic) {
+      var that = this;
+      return function () {
+        if (that.currentMove === that.squares[iDynamic].getAttribute("id")) {
+          that.currentMove = that.currentCoordinates();
+          that.correctAnswers += 1;
+          that.currentCoordinateHolder.style.color = "#fbfbfb";
+          return that.currentMove;
+        } else if (that.currentMove !== that.squares[iDynamic].getAttribute("id")) {
+            that.currentCoordinateHolder.style.color = "#ff0033";
+        }
+      };
+    },
+    startGame: function () {
+      this.currentCoordinateHolder.style.color = "#fbfbfb";
+      this.sideVal = this.chooseSide.options[this.chooseSide.selectedIndex].value;
+      this.currentMove = this.currentCoordinates();
+      this.startTimer();
+      this.finalScoreHolder.innerHTML = "";
+      this.playButton.setAttribute("disabled", true);
+      this.chooseSide.setAttribute("disabled", true);
+      if (this.sideVal === "random") {
+        this.randomSide();
+      } else if (this.sideVal === "black" && this.coordinateArr[0] === "a8") {
+          this.switchSides();
+      } else if (this.sideVal === "white" && this.coordinateArr[0] === "h1") {
+          this.switchSides();
+      }
+    },
+    endGame: function () {
+      this.progBar.className = "complete";
+      this.finalScoreHolder.innerHTML = "<p>" + this.correctAnswers + "</p>";
+      this.currentCoordinateHolder.innerHTML = "";
+      this.currentMove = "";
+      this.playButton.disabled = false;
+      this.chooseSide.disabled = false;
+      this.correctAnswers = 0;
     }
-  }
+  };
 
-  function endGame() {
-    progBar.className = "complete";
-    finalScoreHolder.innerHTML = "<p>" + correctAnswers + "<p>";
-    currentCoordinateHolder.innerHTML = "";
-    currentMove = "";
-    playButton.disabled = false;
-    correctAnswers = 0;
-  }
-
-  pushToArray();
+  board.pushToArray();
 
   // add event listener to side picker
-  chooseSide.addEventListener("change", function () {
-    if (chooseSide.options[chooseSide.selectedIndex].value !== "random") {
-      switchSides();
+  board.chooseSide.addEventListener("change", function () {
+    if (board.chooseSide.options[board.chooseSide.selectedIndex].value !== "random") {
+      board.switchSides();
     }
   }, false);
 
   // add event listeners to squares & permit move
-  for (i = 0; i < squares.length; i += 1) {
-    squares[i].addEventListener("click", nextMove(i), false);
+  for (var i = 0; i < board.squares.length; i += 1) {
+    board.squares[i].addEventListener("click", board.nextMove.call(board, i), false);
   }
   // add event listener to play button
-  playButton.addEventListener("click", startGame, false);
+  board.playButton.addEventListener("click", board.startGame.bind(board), false);
 
   // add prefixed event listeners to progBar animation
-  progBar.addEventListener("webkitAnimationEnd", endGame, false);
-  progBar.addEventListener("animationend", endGame, false);
-  progBar.addEventListener("oAnimationend", endGame, false);
-  progBar.addEventListener("MSAnimationEnd", endGame, false);
+  board.progBar.addEventListener("webkitAnimationEnd", board.endGame.bind(board), false);
+  board.progBar.addEventListener("animationend", board.endGame.bind(board), false);
+  board.progBar.addEventListener("oAnimationend", board.endGame.bind(board), false);
+  board.progBar.addEventListener("MSAnimationEnd", board.endGame.bind(board), false);
 })();
